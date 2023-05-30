@@ -1,13 +1,14 @@
 HumanSays:,RobotSays:
 HumanSays:,RobotSays:
-What time is it?,getTIME
-What time do you have?,getTIME
-Got the time?,getTIME
-When is it?,getTIME
-What day is it?,getDATE
-What is the date?,getDATE
-Do you know what time it is?,getTIME
-Do you have the time,getTIME
+What time is it?,23:46:59
+What time do you have?,23:46:59
+Got the time?,23:46:59
+When is it?,23:46:59
+What day is it?,5/30/2023 0:00
+What is the date?,5/30/2023
+Do you know what time it is?,23:46:59
+Do you have the time,23:46:59
+24 hour format,23:50:30
 IDKnull,I don't know.
 IDKnull,I'll need to take some time to think on that.
 IDKnull,Can you try rephrasing that please?
@@ -24,19 +25,13 @@ Nothing,I think you hit the wrong key...
 Nothing,What did you want to ask?
 Nothing,Let's talk about something.
 Nothing,One more time?
-Who are you?,I am a ChatBot.
-Who are you?,I am a Python powered ChatBot.
-Who are you?,I am a ChatBot running on Python and a dash of artificial intelligence.
-Hello,Hello World!
-Hi,Hello World!
-Greetings,Hello World!
-Hey,Hello World!
-What's up?,Hello World!
-Who are you?,I am a Chatbot.
-What is your name?,ChatBot.
-1 + 1?, 2
-add one to one, two
-what products to you sell?, tsinelas
-what products to you sell?, slippers
-what products to you sell?, armor sa paa
-Do you sell slippers?, yes
+Who are you?,I am a Alumni Bot.
+Who are you?,I am a Python powered Alumni Bot.
+Who are you?,I am a Alumni Bot running on Python and a dash of artificial intelligence.
+Hello,Hello Human!
+Hi,Hello Human!
+Greetings,Hello Human!
+Hey,Hello Human!
+What's up?,Hello Human!
+Who are you?,I am a Alumni Bot.
+What is your name?,Alumni Bot.

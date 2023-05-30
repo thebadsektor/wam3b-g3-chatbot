@@ -7,7 +7,7 @@ from botRespond import getResponse
 
 app = Flask(__name__)
 
-chatbotName = 'Gerabot'
+chatbotName = 'Alumni Bot'
 
 #Create Log file
 try:
