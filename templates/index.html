@@ -10,7 +10,7 @@
 
     <script src="https://kit.fontawesome.com/8ef5e4d9da.js"></script>
     
-    <title>Gerabot</title>
+    <title>Alumni Bot</title>
 
     <style>
     /*
@@ -19,6 +19,15 @@
     Sky Blue #0EF6CC
     White #F4FEFD
     */
+    *{
+    scroll-behavior: smooth;
+    }
+    :root.light-mode {
+
+    }
+    .light-mode body{
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.com/svgjs' width='1440' height='560' preserveAspectRatio='none' viewBox='0 0 1440 560'%3e%3cg mask='url(%26quot%3b%23SvgjsMask1004%26quot%3b)' fill='none'%3e%3crect width='1440' height='560' x='0' y='0' fill='rgba(244%2c 254%2c 253%2c 1)'%3e%3c/rect%3e%3cpath d='M0%2c322.291C67.791%2c318.919%2c137.804%2c338.951%2c199.112%2c309.825C264.017%2c278.991%2c315.009%2c222.845%2c345.898%2c157.966C377.061%2c92.511%2c380.268%2c18.534%2c372.092%2c-53.499C363.728%2c-127.196%2c344.601%2c-200.557%2c298.603%2c-258.741C251.432%2c-318.409%2c188.222%2c-379.01%2c112.227%2c-382.211C37.165%2c-385.372%2c-8.391%2c-295.234%2c-80.663%2c-274.714C-154.02%2c-253.886%2c-246.727%2c-313.612%2c-304.536%2c-263.882C-360.757%2c-215.518%2c-342.966%2c-123.437%2c-342.724%2c-49.276C-342.511%2c16.001%2c-324.441%2c76.745%2c-303.223%2c138.477C-279.747%2c206.779%2c-274.025%2c292.848%2c-212.263%2c330.288C-150.463%2c367.751%2c-72.179%2c325.881%2c0%2c322.291' fill='%2399f6ec'%3e%3c/path%3e%3cpath d='M1440 1161.52C1547.961 1136.972 1626.138 1054.408 1720.017 995.7139999999999 1815.353 936.11 1929.4859999999999 904.5699999999999 1995.99 813.912 2070.145 712.826 2126.408 587.955 2110.352 463.618 2094.232 338.78999999999996 1996.252 244.44600000000003 1910.547 152.269 1827.471 62.91899999999998 1740.251-29.635999999999967 1622.397-61.186000000000035 1505.738-92.41600000000005 1377.708-73.70100000000002 1269.923-19.230000000000018 1170.816 30.855999999999995 1132.974 147.41199999999998 1054.392 225.86900000000003 967.408 312.71500000000003 822.398 348.878 784.208 465.711 745.363 584.548 810.698 710.043 858.344 825.633 907.588 945.1 952.2429999999999 1080.225 1064.143 1144.844 1174.99 1208.854 1315.185 1189.9 1440 1161.52' fill='white'%3e%3c/path%3e%3c/g%3e%3cdefs%3e%3cmask id='SvgjsMask1004'%3e%3crect width='1440' height='560' fill='white'%3e%3c/rect%3e%3c/mask%3e%3c/defs%3e%3c/svg%3e");
+    }
     body{
         /*
         background-color: #1B2223;
@@ -34,15 +43,37 @@
         background-size: cover;
         background-repeat: no-repeat;
     }
+    body::-webkit-scrollbar{
+        width: 0;
+    }
     .card-header{
         background-color: #F4FEFD;
         display: flex;
         align-items: center;
-        justify-content: center ;
+        justify-content: center;
+    }
+    .fa-sun, .fa-moon{
+        height: 2.5rem;
+        width: 2.5rem;
+        font-size: 1.5rem;
+        border-radius: 50%;
+        padding: 0.5rem;
+        margin-left: 1rem;
+        transition: 0.3s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        color: #1B2223;
+        background-color: #0EF6CC;
+    }
+    .fa-sun:hover, .fa-moon:hover{
+        transition: 0.3s;
+        color: #0EF6CC;
+        background-color: #1B2223;
     }
     .chatbox{
         display: flex;
-        flex-wrap: wrap;
         flex-direction: column;
     }
     .chatbox::-webkit-scrollbar{
@@ -176,6 +207,8 @@
         <div class="card">
             <div class="card-header font-weight-bold">
                 Alumni Bot
+                <i class="fa-solid fa-sun" id="sunIcon"></i>
+                <i class="fa-solid fa-moon" id="moonIcon" style="display:none"></i>
             </div>
             <div class="card-body chatbox" id="chatbox">
               
@@ -213,6 +246,40 @@
             now = new Date();
             timeString = now.toLocaleTimeString();
         }
+        
+        //Toggle light and dark mode
+        $(document).ready(function() {
+        // Apply user's preferred mode on page load
+        const isLightMode = localStorage.getItem('lightMode');
+        if (isLightMode === 'true') {
+            $(':root').addClass('light-mode');
+        }
+
+        // Toggle and store user preference
+        $('#sunIcon').click(function() {
+            $(':root').toggleClass('light-mode');
+            $(this).hide();
+            $('#moonIcon').show();
+            localStorage.setItem('lightMode', $(':root').hasClass('light-mode'));
+        });
+
+        $('#moonIcon').click(function() {
+            $(':root').toggleClass('light-mode');
+            $(this).hide();
+            $('#sunIcon').show();
+            localStorage.setItem('lightMode', $(':root').hasClass('light-mode'));
+        });
+        });
+
+        // //Light mode
+        // $("").on("click", function(event) {
+        // });
+
+        // //Dark mode
+        // $("#moonIcon").on("click", function(event) {
+        //     $(this).hide();
+        //     $('#sunIcon').show();
+        // });
 
         var rawText;
         $("#chat-input").keypress(function(e){
@@ -239,6 +306,7 @@
             updateTime();
             var botHtml = '<div class="chat-response-wrapper" id="msgCon"><p> <span class="font-weight-bold" id="botUser">Alumni Bot </span> <span class="text-sm text-secondary" style="font-size: 0.60rem" id="botTime">' + timeString + '</span></p><p id="botMsg">' + data + '</p></div>';
             $("#chatbox").append(botHtml);
+            $('.chatbox').scrollTop($('.chatbox')[0].scrollHeight);
           });
         }
 
@@ -248,6 +316,7 @@
             updateTime();
             var botHtml = '<div class="chat-response-wrapper" id="msgCon"><p> <span class="font-weight-bold" id="botUser">Alumni Bot </span> <span class="text-sm text-secondary" style="font-size: 0.60rem" id="botTime">' + timeString + '</span></p><p id="botMsg">' + data + '</p></div>';
             $("#chatbox").append(botHtml);
+            $('.chatbox').scrollTop($('.chatbox')[0].scrollHeight);
           });
         }
 
